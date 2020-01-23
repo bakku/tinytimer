@@ -5,7 +5,9 @@
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring/ring-jetty-adapter "1.8.0"]
-                 [compojure "1.6.1"]]
+                 [compojure "1.6.1"]
+                 [hiccup "1.0.5"]
+                 [ring/ring-mock "0.4.0"]]
   :plugins [[lein-ring "0.12.5"]]
   :main ^:skip-aot tinytimer.core
   :target-path "target/%s"
