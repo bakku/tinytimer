@@ -2,11 +2,13 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.adapter.jetty :as ring]
-            [tinytimer.routes.home :as home])
+            [tinytimer.routes.home :as home]
+            [tinytimer.routes.timers :as timers])
   (:gen-class))
 
 (defroutes app-routes
   home/routes
+  timers/routes
   (route/resources "/css" {:root "public/css"})
   (route/resources "/img" {:root "public/img"})
   (route/resources "/js"  {:root "public/js"})

@@ -1,4 +1,26 @@
+.navbar .navbar-menu.is-active a.button {
+    margin: 0 auto;
+    margin-bottom: .5rem;
+}
+
 .footer img {
     margin: 0 auto;
     margin-bottom: 20px;
+}
+
+#content .headline {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+#content .button[type=submit] {
+    margin-top: 20px;
+}
+
+.datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input {
+    max-width: 100%;
+}
+
+.datetimepicker-wrapper .modal-background {
+    background-color: rgba(10,10,10,.3);
 }

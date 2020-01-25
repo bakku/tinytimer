@@ -1,4 +1,16 @@
 (function() {
+  function initializeNavbar() {
+    const navbarBurger = document.querySelector('.navbar-burger');
+    const navbarMenu = document.querySelector('.navbar-menu');
+
+    if (navbarBurger) {
+      navbarBurger.addEventListener('click', function() {
+        navbarBurger.classList.toggle('is-active');
+        navbarMenu.classList.toggle('is-active');
+      });
+    }
+  }
+
   function zeroPadded(integer) {
     if (integer < 10) {
       return "0" + integer;
@@ -33,5 +45,18 @@
     }
   }
 
+  function initializeExpiresAtInput() {
+    bulmaCalendar.attach('#expires-at-input', {
+      type: 'datetime',
+      dateFormat: 'DD/MM/YYYY',
+      displayMode: 'default',
+      showTodayButton: false,
+      validateLabel: 'OK',
+      minDate: moment().format('MM/DD/YYYY')
+    });
+  }
+
+  initializeNavbar();
   exampleTimeDecrementer();
+  initializeExpiresAtInput();
 }());
