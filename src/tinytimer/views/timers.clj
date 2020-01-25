@@ -4,7 +4,8 @@
 
 (defn new
   []
-  (layout/page "Create new timer"
+  (layout/page {:title "Create new timer"
+                :show-navbar-create-btn false}
                [:section.section
                  [:div.container
                    [:h1.is-size-3.headline "Create new timer"]
@@ -19,4 +20,7 @@
                        [:input#expires-at-input {:name "target-time"
                                                  :type "date"}]]
                      [:div.field.has-text-centered
-                       [:button.button.is-success {:type "submit"} "Create"]]]]]))
+                       [:strong
+                         [:button.button.is-success.has-text-weight-bold.is-medium
+                          {:type "submit"}
+                          "Create"]]]]]]))

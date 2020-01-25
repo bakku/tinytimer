@@ -2,20 +2,23 @@
   (:require [hiccup.page :as h]))
 
 (defn- navbar
-  []
+  [{:keys [show-navbar-create-btn]
+    :or {show-navbar-create-btn true}}]
   [[:nav.navbar.has-shadow
      [:div.container
        [:div.navbar-brand
          [:a.is-size-4.navbar-item {:href "/"} "⏱ Tinytimer"]
-         [:a.navbar-burger
-           (for [x (range 3)]
-             [:span])]]
-       [:div.navbar-menu
-         [:div.navbar-end
-           [:div.navbar-item
-             [:div.buttons
-               [:a.button.is-primary {:href "/t/new"}
-                 [:strong "Create timer"]]]]]]]]])
+         (when show-navbar-create-btn
+           [:a.navbar-burger
+             (for [x (range 3)]
+               [:span])])]
+       (when show-navbar-create-btn
+         [:div.navbar-menu
+           [:div.navbar-end
+             [:div.navbar-item
+               [:div.buttons
+                 [:a.button.is-danger {:href "/t/new"}
+                   [:strong "Create timer"]]]]]])]]])
 
 (defn- body
   [content]
@@ -47,7 +50,7 @@
    [:script {:src "/js/tinytimer.js"}]])
 
 (defn page
-  [title & content]
+  [{:keys [title] :as options} & content]
   (h/html5
     [:head
       [:meta {:charset "utf-8"}]
@@ -59,6 +62,6 @@
       [:link {:rel "stylesheet" :href "/css/styles.css" :type "text/css"}]]
     [:body
       (concat
-        (navbar)
+        (navbar options)
         (body content)
         (footer))]))

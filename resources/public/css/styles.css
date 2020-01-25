@@ -8,6 +8,15 @@
     margin-bottom: 20px;
 }
 
+#content .start-section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+#content .start-create-button {
+    margin-top: 20px;
+}
+
 #content .headline {
     margin-top: -20px;
     margin-bottom: 20px;
