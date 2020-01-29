@@ -1,5 +1,6 @@
 (ns tinytimer.views.layout
-  (:require [hiccup.page :as h]))
+  (:require [hiccup.page :as h]
+            [environ.core :refer [env]]))
 
 (defn- navbar
   [{:keys [show-navbar-create-btn]
@@ -46,8 +47,9 @@
            [:p [:a {:href "/imprint"} "Imprint"]]
            [:p [:a {:href "/privacy"} "Privacy Policy"]]]]]]
    [:script {:src "/js/moment.min.js"}]
-   [:script {:src "/js/bulma-calendar.min.js"}]
-   [:script {:src "/js/tinytimer.js"}]])
+   (if (= (:app-env env "development") "development")
+     [:script {:src "/js/dev/main.js"}]
+     [:script {:src "/js/main.js"}])])
 
 (defn page
   [{:keys [title] :as options} & content]

@@ -1,0 +1,16 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies
+ []
+
+ :builds
+ {:dev     {:output-dir "resources/public/js/dev"
+            :asset-path "."
+            :target :browser
+            :modules {:main {:init-fn tinytimer.frontend.core/main}}}
+  :release {:output-dir "resources/public/js/"
+            :asset-path "."
+            :target :browser
+            :modules {:main {:init-fn tinytimer.frontend.core/main}}}}}
