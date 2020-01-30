@@ -5,7 +5,7 @@
 
 (defn- split-time
   [time]
-  (let [[h m s] (clojure.string/split time #":")]
+  (let [[h m s] (.split time ":")]
     {:seconds (js/parseInt s)
      :minutes (js/parseInt m)
      :hours   (js/parseInt h)}))

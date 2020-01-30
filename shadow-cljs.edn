@@ -6,11 +6,11 @@
  []
 
  :builds
- {:dev     {:output-dir "resources/public/js/dev"
-            :asset-path "."
-            :target :browser
-            :modules {:main {:init-fn tinytimer.frontend.core/main}}}
-  :release {:output-dir "resources/public/js/"
-            :asset-path "."
-            :target :browser
-            :modules {:main {:init-fn tinytimer.frontend.core/main}}}}}
+ {:dev  {:output-dir "resources/public/js/dev"
+         :asset-path "."
+         :target :browser
+         :modules {:main {:init-fn tinytimer.frontend.core/main}}}
+  :prod {:output-dir "resources/public/js/"
+         :asset-path "."
+         :target :browser
+         :modules {:main {:init-fn tinytimer.frontend.core/main}}}}}

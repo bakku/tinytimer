@@ -1,0 +1,5 @@
+node_modules
+.shadow-cljs
+.git
+resources/public/js
+target
