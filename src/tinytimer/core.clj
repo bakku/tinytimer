@@ -2,6 +2,7 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.adapter.jetty :as ring]
+            [ring.middleware.params :refer [wrap-params]]
             [tinytimer.routes.home :as home]
             [tinytimer.routes.timers :as timers])
   (:gen-class))
@@ -14,7 +15,9 @@
   (route/resources "/js"  {:root "public/js"})
   (route/not-found "Not Found"))
 
-(def application app-routes)
+(def application
+  (-> app-routes
+      wrap-params))
 
 (defn -main
   []

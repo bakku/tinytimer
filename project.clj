@@ -5,6 +5,7 @@
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring/ring-jetty-adapter "1.8.0"]
+                 [ring/ring-core "1.8.0"]
                  [compojure "1.6.1"]
                  [hiccup "1.0.5"]
                  [environ "1.1.0"]

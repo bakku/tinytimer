@@ -17,6 +17,11 @@
     margin-top: 20px;
 }
 
+#content .notification {
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
 #content .headline {
     margin-top: -20px;
     margin-bottom: 20px;

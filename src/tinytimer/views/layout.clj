@@ -46,7 +46,6 @@
          [:div.column.is-4.has-text-centered
            [:p [:a {:href "/imprint"} "Imprint"]]
            [:p [:a {:href "/privacy"} "Privacy Policy"]]]]]]
-   [:script {:src "/js/moment.min.js"}]
    (if (= (:app-env env "development") "development")
      [:script {:src "/js/dev/main.js"}]
      [:script {:src "/js/main.js"}])])
