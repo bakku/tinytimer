@@ -2,6 +2,14 @@
   (:require [hiccup.form :as h]
             [tinytimer.views.layout :as layout]))
 
+(defn- split-lines
+  [s]
+  (let [res (->> (clojure.string/split s #"\r\n|\r|\n")
+                 (interpose [:br])
+                 vec)]
+    (pr res)
+    res))
+
 (defn new
   [& {:keys [description expires-at flash]}]
   (layout/page {:title "Create new timer"
@@ -28,3 +36,11 @@
                          [:button.button.is-success.has-text-weight-bold.is-medium
                           {:type "submit"}
                           "Create"]]]]]]))
+
+(defn show
+  [{:keys [caption expires-at]}]
+  (layout/page {:title caption}
+               [:section.section.timer-wrapper.has-text-centered
+                 [:div.container
+                   [:p#timer-expires-at.is-size-1 {:data expires-at}]
+                   (vec (concat [:p.is-size-2] (split-lines caption)))]]))

@@ -1,11 +1,6 @@
 (ns tinytimer.views.home
-  (:require [tinytimer.views.layout :as layout]))
-
-(defn- zero-pad
-  [input]
-  (if (< input 10)
-    (str "0" input)
-    (str input)))
+  (:require [tinytimer.views.layout :as layout]
+            [tinytimer.shared :refer [zero-pad]]))
 
 (defn- random-time
   []

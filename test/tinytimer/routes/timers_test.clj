@@ -3,7 +3,7 @@
             [ring.mock.request :as mock]
             [next.jdbc.sql :as sql]
             [tinytimer.core :refer [application]]
-            [tinytimer.db :refer [get-datasource as-kebab-maps]]
+            [tinytimer.db :refer [get-datasource as-kebab-maps with-snake-case-columns]]
             [tinytimer.fixtures :as fixtures]
             [tinytimer.routes.timers :refer [timer-path-len]]))
 
@@ -45,3 +45,14 @@
           resp (application req)
           loc  (get-in resp [:headers "Location"])]
       (is (re-matches (re-pattern (str "/t/.{" timer-path-len "}")) loc)))))
+
+(deftest show-test
+  (testing "should render"
+    (sql/insert! (get-datasource) :timers {:path       "abcde"
+                                           :expires-at "31/01/2020 14:00"
+                                           :caption    "A TIMER!"}
+                                          with-snake-case-columns)
+    (is (-> (mock/request :get "/t/abcde")
+            (application)
+            (:body)
+            (clojure.string/includes? "A TIMER!")))))

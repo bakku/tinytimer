@@ -6,4 +6,4 @@
 
 (defn toggle-class
   [el class]
-  (.. el classList toggle class))
+  (.. el -classList (toggle class)))

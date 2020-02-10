@@ -8,11 +8,15 @@
   (let [el-burger (util/get-element ".navbar-burger")
         el-menu   (util/get-element ".navbar-menu")]
     (when el-burger
-      (util/toggle-class el-burger "is-active")
-      (util/toggle-class el-menu "is-active"))))
+      (.addEventListener el-burger
+                         "click"
+                         #(do
+                            (util/toggle-class el-burger "is-active")
+                            (util/toggle-class el-menu "is-active"))))))
 
 (defn main
   []
   (init-navbar)
   (start/init-time-decrementer)
-  (timers/init-expires-at-input))
+  (timers/init-expires-at-input)
+  (timers/init-expires-at))

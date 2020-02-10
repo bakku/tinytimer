@@ -2,7 +2,7 @@
   (:require [compojure.core :refer [defroutes GET POST]]
             [next.jdbc.sql :as sql]
             [ring.util.response :refer [redirect]]
-            [tinytimer.db :refer [get-datasource with-snake-case-columns]]
+            [tinytimer.db :refer [get-datasource as-kebab-maps with-snake-case-columns]]
             [tinytimer.views.timers :as view]))
 
 (def timer-path-len 20)
@@ -38,8 +38,16 @@
               :flash create-missing-details-flash)
     (create-timer desc expires-at)))
 
+(defn- show-timer
+  [path]
+  (let [ds    (get-datasource)
+        timer (sql/get-by-id ds :timers path :path as-kebab-maps)]
+    (println timer)
+    (view/show timer)))
+
 (defroutes routes
   (GET "/t/new" [] (view/new))
   (POST "/t"
         [description expires-at]
-        (process-timer description expires-at)))
+        (process-timer description expires-at))
+  (GET "/t/:path" [path] (show-timer path)))
