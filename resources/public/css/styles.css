@@ -36,6 +36,10 @@
     padding-bottom: 18rem;
 }
 
+#content .timer-wrapper button {
+    margin-top: 5rem;
+}
+
 .datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input {
     max-width: 100%;
 }

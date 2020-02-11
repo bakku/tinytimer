@@ -1,14 +1,11 @@
 (ns tinytimer.views.timers
-  (:require [hiccup.form :as h]
-            [tinytimer.views.layout :as layout]))
+  (:require [tinytimer.views.layout :as layout]))
 
 (defn- split-lines
   [s]
-  (let [res (->> (clojure.string/split s #"\r\n|\r|\n")
-                 (interpose [:br])
-                 vec)]
-    (pr res)
-    res))
+  (->> (clojure.string/split s #"\r\n|\r|\n")
+       (interpose [:br])
+       vec))
 
 (defn new
   [& {:keys [description expires-at flash]}]
@@ -38,9 +35,11 @@
                           "Create"]]]]]]))
 
 (defn show
-  [{:keys [caption expires-at]}]
+  [{:keys [caption expires-at]} silent]
   (layout/page {:title caption}
                [:section.section.timer-wrapper.has-text-centered
-                 [:div.container
-                   [:p#timer-expires-at.is-size-1 {:data expires-at}]
-                   (vec (concat [:p.is-size-2] (split-lines caption)))]]))
+                [:div.container
+                 [:p#timer-expires-at.is-size-1 {:data expires-at}]
+                 (vec (concat [:p.is-size-2] (split-lines caption)))
+                 (when (not silent)
+                  [:button#copy-link.button.is-light "Click here to copy a link"])]]))

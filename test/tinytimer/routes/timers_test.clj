@@ -47,12 +47,17 @@
       (is (re-matches (re-pattern (str "/t/.{" timer-path-len "}")) loc)))))
 
 (deftest show-test
+  (sql/insert! (get-datasource) :timers {:path       "abcde"
+                                          :expires-at "31/01/2020 14:00"
+                                          :caption    "A TIMER!"}
+                                        with-snake-case-columns)
   (testing "should render"
-    (sql/insert! (get-datasource) :timers {:path       "abcde"
-                                           :expires-at "31/01/2020 14:00"
-                                           :caption    "A TIMER!"}
-                                          with-snake-case-columns)
     (is (-> (mock/request :get "/t/abcde")
             (application)
             (:body)
-            (clojure.string/includes? "A TIMER!")))))
+            (clojure.string/includes? "Click here to copy a link"))))
+  (testing "should hide copy link button for silent page"
+    (is (not (-> (mock/request :get "/t/abcde?s=1")
+                 (application)
+                 (:body)
+                 (clojure.string/includes? "Click here to copy a link"))))))

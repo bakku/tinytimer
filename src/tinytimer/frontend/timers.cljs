@@ -44,3 +44,18 @@
 (defn init-expires-at
   []
   (decrement-timer))
+
+(defn copy-silent-link-to-clipboard
+  []
+  (let [loc (.-location js/window)]
+    (util/copy-to-clipboard (str loc "?s=1"))))
+
+(defn init-link-copy-button
+  []
+  (if-let [button (util/get-element "#copy-link")]
+    (.addEventListener button "click" copy-silent-link-to-clipboard)))
+
+(defn init-timers-show-page
+  []
+  (init-expires-at)
+  (init-link-copy-button))

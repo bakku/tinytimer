@@ -19,4 +19,4 @@
   (init-navbar)
   (start/init-time-decrementer)
   (timers/init-expires-at-input)
-  (timers/init-expires-at))
+  (timers/init-timers-show-page))

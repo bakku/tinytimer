@@ -39,15 +39,14 @@
     (create-timer desc expires-at)))
 
 (defn- show-timer
-  [path]
+  [path silent]
   (let [ds    (get-datasource)
         timer (sql/get-by-id ds :timers path :path as-kebab-maps)]
-    (println timer)
-    (view/show timer)))
+    (view/show timer silent)))
 
 (defroutes routes
   (GET "/t/new" [] (view/new))
   (POST "/t"
         [description expires-at]
         (process-timer description expires-at))
-  (GET "/t/:path" [path] (show-timer path)))
+  (GET "/t/:path" [path s] (show-timer path s)))

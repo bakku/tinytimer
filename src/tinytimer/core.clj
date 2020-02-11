@@ -1,5 +1,5 @@
 (ns tinytimer.core
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [defroutes]]
             [compojure.route :as route]
             [ring.adapter.jetty :as ring]
             [ring.middleware.params :refer [wrap-params]]
