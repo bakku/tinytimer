@@ -40,6 +40,10 @@
     margin-top: 5rem;
 }
 
+#content #not-found-create-button {
+    margin-top: 3rem;
+}
+
 .datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input {
     max-width: 100%;
 }

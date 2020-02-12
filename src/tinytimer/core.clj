@@ -4,7 +4,8 @@
             [ring.adapter.jetty :as ring]
             [ring.middleware.params :refer [wrap-params]]
             [tinytimer.routes.home :as home]
-            [tinytimer.routes.timers :as timers])
+            [tinytimer.routes.timers :as timers]
+            [tinytimer.views.static :as static])
   (:gen-class))
 
 (defroutes app-routes
@@ -13,7 +14,7 @@
   (route/resources "/css" {:root "public/css"})
   (route/resources "/img" {:root "public/img"})
   (route/resources "/js"  {:root "public/js"})
-  (route/not-found "Not Found"))
+  (route/not-found (static/not-found)))
 
 (def application
   (-> app-routes

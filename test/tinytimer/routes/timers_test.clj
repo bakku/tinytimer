@@ -51,6 +51,11 @@
                                           :expires-at "31/01/2020 14:00"
                                           :caption    "A TIMER!"}
                                         with-snake-case-columns)
+  (testing "should render 404 if timer does not exist"
+    (is (-> (mock/request :get "/t/invalid")
+            (application)
+            (:body)
+            (clojure.string/includes? "This page does not exist"))))
   (testing "should render"
     (is (-> (mock/request :get "/t/abcde")
             (application)
