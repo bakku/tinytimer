@@ -46,7 +46,7 @@
          [:div.column.is-4.has-text-centered
            [:p [:a {:href "/imprint"} "Imprint"]]
            [:p [:a {:href "/privacy"} "Privacy Policy"]]]]]]
-   (if (= (:app-env env "development") "development")
+   (if (not= (:app-env env "development") "production")
      [:script {:src "/js/dev/main.js"}]
      [:script {:src "/js/main.js"}])])
 

@@ -3,6 +3,7 @@
             [compojure.route :as route]
             [ring.adapter.jetty :as ring]
             [ring.middleware.params :refer [wrap-params]]
+            [tinytimer.middleware :refer [wrap-logger]]
             [tinytimer.routes.home :as home]
             [tinytimer.routes.timers :as timers]
             [tinytimer.views.static :as static])
@@ -18,7 +19,8 @@
 
 (def application
   (-> app-routes
-      wrap-params))
+      wrap-params
+      wrap-logger))
 
 (defn -main
   []
