@@ -26,6 +26,10 @@
               (.format date "MM/DD/YYYY HH:mm")
               (.value calendar date))))))
 
+(defn- timer-expired?
+  [diff-duration]
+  (> (.asMilliseconds diff-duration) 0))
+
 (defn- decrement-timer
   []
   (if-let [timer (util/get-element "#timer-expires-at")]
@@ -38,8 +42,11 @@
           min-and-sec   (as-> (.asMilliseconds diff-duration) ms
                               (.utc moment ms)
                               (.format ms ":mm:ss"))]
-      (set! (.-innerText timer) (str hours min-and-sec))
-      (js/setTimeout decrement-timer 1000))))
+      (if (timer-expired? diff-duration)
+        (do
+          (set! (.-innerText timer) (str hours min-and-sec))
+          (js/setTimeout decrement-timer 1000))
+        (set! (.-innerText timer) "00:00:00")))))
 
 (defn init-expires-at
   []
