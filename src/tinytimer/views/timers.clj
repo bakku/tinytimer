@@ -43,3 +43,4 @@
                  (vec (concat [:p.is-size-2] (split-lines caption)))
                  (when (not silent)
                   [:button#copy-link.button.is-light "Click here to copy a link"])]]))
+

@@ -44,7 +44,7 @@
            [:a {:href "https://bulma.io/made-with-bulma/"}
              [:img.is-block {:src "/img/made-with-bulma.png" :width "50%"}]]]
          [:div.column.is-4.has-text-centered
-           [:p [:a {:href "/imprint"} "Imprint"]]
+           [:p [:a {:href "/legal"} "Legal Disclosure"]]
            [:p [:a {:href "/privacy"} "Privacy Policy"]]]]]]
    (if (not= (:app-env env "development") "production")
      [:script {:src "/js/dev/main.js"}]

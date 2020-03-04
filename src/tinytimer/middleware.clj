@@ -1,4 +1,5 @@
-(ns tinytimer.middleware)
+(ns tinytimer.middleware
+  (:require [environ.core :refer [env]]))
 
 (defn- formatted-query-string
   [request]
@@ -22,5 +23,6 @@
           response       (handler request)
           difference     (- (System/currentTimeMillis) start-ms)
           status         (:status response)]
-      (println (str request-method " " path query-string " - Completed " status " in " difference " ms"))
+      (when (not= (:app-env env "development") "test")
+        (println (str request-method " " path query-string " - Completed " status " in " difference " ms")))
       response)))
