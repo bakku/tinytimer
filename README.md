@@ -11,8 +11,8 @@ The application is written using Clojure for both the frontend and backend.
 To start working the following tools are necessary:
 
 - npm/yarn
-- ![Leiningen](https://github.com/technomancy/leiningen)
-- ![shadow-cljs](https://github.com/thheller/shadow-cljs)
+- [Leiningen](https://github.com/technomancy/leiningen)
+- [shadow-cljs](https://github.com/thheller/shadow-cljs)
 
 After cloning the repository run `yarn` or `npm install` to download all the frontend dependencies. Furthermore, with
 
@@ -56,3 +56,19 @@ Executing the tests is fairly simple.
 
 1. Create/Migrate the testing database: `lein with-profile test migrate`
 2. Run the tests: `lein test`
+
+## Production
+
+The easiest way to build and deploy tinytimer is by using docker. Currently the production docker image of tinytimer is build using Github actions. The definition of the jobs is in `.github/workflows/ci.yml`. On production the image can be loaded into the local docker registry and run similar to:
+
+```
+sudo docker run \
+	--name tinytimer \
+	-d \
+	--env APP_ENV=production \
+	--env DATABASE_URL=jdbc:sqlite:/db/production.db \
+	--env GOOGLE_SITE_VERIFICATION=SITE_VERIFICATION_KEY \
+	-v /home/tinytimer/db:/db \
+       	-p 8080:8080 \
+	-t tinytimer:latest
+```
