@@ -57,6 +57,9 @@
       [:meta {:charset "utf-8"}]
       [:meta {:name "viewport"
               :content "width=device-width, initial-scale=1"}]
+      (if-let [k (:google-site-verification env)]
+        [:meta {:name "google-site-verification"
+                :content k}])
       [:title (str title " | Tinytimer")]
       [:link {:rel "stylesheet" :href "/css/bulma.min.css" :type "text/css"}]
       [:link {:rel "stylesheet" :href "/css/bulma-calendar.min.css" :type "text/css"}]
