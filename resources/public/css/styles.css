@@ -31,16 +31,12 @@
     margin-top: 20px;
 }
 
-#content .timer-top-padding-lg {
-    padding-top: 33vh;
-}
-
-#content .timer-top-padding-md {
-    padding-top: 30vh;
-}
-
 #content .timer-wrapper {
-    padding-bottom: 18rem;
+    /* 3.25rem is the size of the navbar */
+    height: calc(100vh - 3.25rem);
+
+    display: flex;
+    align-items: center;
 }
 
 #content .timer-wrapper button {
