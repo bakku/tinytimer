@@ -1,4 +1,4 @@
-(defproject tinytimer "1.0.0-RELEASE"
+(defproject tinytimer "1.1.0-SNAPSHOT"
   :description "Small application to create and share timers"
   :url "https://github.com/bakku/tinytimer"
   :license {:name "MIT"

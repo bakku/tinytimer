@@ -54,8 +54,13 @@
 
 (defn copy-silent-link-to-clipboard
   []
-  (let [loc (.-location js/window)]
-    (util/copy-to-clipboard (str loc "?s=1"))))
+  (let [loc    (.-location js/window)
+        button (util/get-element "#copy-link")]
+    (util/copy-to-clipboard (str loc "?s=1"))
+    (doto (.-classList button)
+      (.remove "is-light")
+      (.add "is-success"))
+    (set! (.-innerText button) "Copied! 👌")))
 
 (defn init-link-copy-button
   []

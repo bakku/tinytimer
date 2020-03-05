@@ -42,5 +42,5 @@
                  [:p#timer-expires-at.is-size-1 {:data expires-at}]
                  (vec (concat [:p.is-size-2] (split-lines caption)))
                  (when (not silent)
-                  [:button#copy-link.button.is-light "Click here to copy a link"])]]))
+                  [:button#copy-link.button.is-light "Copy this link"])]]))
 

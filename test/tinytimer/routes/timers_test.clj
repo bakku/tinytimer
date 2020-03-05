@@ -60,7 +60,7 @@
     (is (-> (mock/request :get "/t/abcde")
             (application)
             (:body)
-            (clojure.string/includes? "Click here to copy a link"))))
+            (clojure.string/includes? "Copy this link"))))
   (testing "should hide copy link button for silent page"
     (is (not (-> (mock/request :get "/t/abcde?s=1")
                  (application)
