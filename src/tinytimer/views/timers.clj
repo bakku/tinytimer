@@ -37,7 +37,9 @@
 (defn show
   [{:keys [caption expires-at]} silent]
   (layout/page {:title caption}
-               [:section.section.timer-wrapper.has-text-centered
+               [:section {:class
+                          (str "section has-text-centered timer-wrapper "
+                               (if silent "timer-top-padding-lg" "timer-top-padding-md"))}
                 [:div.container
                  [:p#timer-expires-at.is-size-1 {:data expires-at}]
                  (vec (concat [:p.is-size-2] (split-lines caption)))

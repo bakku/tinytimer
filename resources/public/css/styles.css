@@ -31,8 +31,15 @@
     margin-top: 20px;
 }
 
+#content .timer-top-padding-lg {
+    padding-top: 33vh;
+}
+
+#content .timer-top-padding-md {
+    padding-top: 30vh;
+}
+
 #content .timer-wrapper {
-    padding-top: 18rem;
     padding-bottom: 18rem;
 }
 
