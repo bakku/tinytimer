@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "bulma-calendar": "^6.0.7",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   }
 }
